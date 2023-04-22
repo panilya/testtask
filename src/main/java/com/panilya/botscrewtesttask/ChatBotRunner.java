@@ -6,6 +6,9 @@ import com.panilya.botscrewtesttask.fakedata.DataPreInitializationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -41,12 +44,14 @@ public class ChatBotRunner implements CommandLineRunner {
         System.out.println("[3] - Show the average salary for the department {department_name}");
         System.out.println("[4] - Show count of employee for {department_name}");
         System.out.println("[5] - Global search by {template}");
-        System.out.println("\n" + "You can also enter number of command to execute it and the parameter" + " (For example: 1 Mathematics)");
+        System.out.println("[6] - stop - to exit the program");
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 String command = scanner.nextLine();
                 if (command.equals("stop")) {
+                    SpringApplication.exit(new SpringApplicationBuilder(BotscrewTestTaskApplication.class)
+                            .web(WebApplicationType.NONE).run(), () -> 0);
                     break;
                 }
                 try {
