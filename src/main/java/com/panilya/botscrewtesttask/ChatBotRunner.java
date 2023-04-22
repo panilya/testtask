@@ -1,8 +1,8 @@
 package com.panilya.botscrewtesttask;
 
-import com.panilya.botscrewtesttask.service.CommandHandler;
 import com.panilya.botscrewtesttask.exception.CommandNotFoundException;
 import com.panilya.botscrewtesttask.fakedata.DataPreInitializationService;
+import com.panilya.botscrewtesttask.service.CommandHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

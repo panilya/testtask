@@ -4,7 +4,6 @@ import com.panilya.botscrewtesttask.database.Department;
 import com.panilya.botscrewtesttask.database.Lecturer;
 import com.panilya.botscrewtesttask.repository.DepartmentRepository;
 import com.panilya.botscrewtesttask.repository.LecturerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,6 @@ public class DataPreInitializationService {
     // Flag to fill database on startup with predefined data
     private final boolean fillDatabase = true;
 
-    @Autowired
     public DataPreInitializationService(LecturerRepository lecturerRepository, DepartmentRepository departmentRepository) {
         this.lecturerRepository = lecturerRepository;
         this.departmentRepository = departmentRepository;

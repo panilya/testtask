@@ -6,19 +6,20 @@ import com.panilya.botscrewtesttask.exception.CommandExecutionException;
 import com.panilya.botscrewtesttask.repository.DepartmentRepository;
 import com.panilya.botscrewtesttask.service.ChatCommand;
 import com.panilya.botscrewtesttask.service.CommandInformation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.function.Predicate;
 
 @Component
 public class HeadOfDepartmentCommand implements ChatCommand {
 
     private static final CommandInformation commandInformation = CommandInformation.HEAD_OF_DEPARTMENT_COMMAND;
 
-    private final DepartmentRepository departmentRepository;
+    private static final Predicate<String> satisfactionPredicate = userInput -> userInput.matches("Who is head of department\\s(.+)");
 
-    @Autowired
+    private DepartmentRepository departmentRepository;
+
     public HeadOfDepartmentCommand(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
     }
@@ -42,6 +43,11 @@ public class HeadOfDepartmentCommand implements ChatCommand {
     @Override
     public CommandInformation getCommandInformation() {
         return commandInformation;
+    }
+
+    @Override
+    public Predicate<String> getSatisfactionPredicate() {
+        return satisfactionPredicate;
     }
 
     public String extractCommandParameter(String commandContent) {

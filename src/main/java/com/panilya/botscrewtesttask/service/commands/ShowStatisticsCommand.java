@@ -5,19 +5,20 @@ import com.panilya.botscrewtesttask.dto.DepartmentDegreeCountDto;
 import com.panilya.botscrewtesttask.repository.DepartmentRepository;
 import com.panilya.botscrewtesttask.service.ChatCommand;
 import com.panilya.botscrewtesttask.service.CommandInformation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class ShowStatisticsCommand implements ChatCommand {
 
     private final CommandInformation commandInformation = CommandInformation.SHOW_STATISTICS_COMMAND;
 
-    private final DepartmentRepository departmentRepository;
+    private final Predicate<String> satisfactionPredicate = userInput -> userInput.matches("Show\\s(.+)\\sstatistics");
 
-    @Autowired
+    private DepartmentRepository departmentRepository;
+
     public ShowStatisticsCommand(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
     }
@@ -35,6 +36,11 @@ public class ShowStatisticsCommand implements ChatCommand {
     @Override
     public CommandInformation getCommandInformation() {
         return commandInformation;
+    }
+
+    @Override
+    public Predicate<String> getSatisfactionPredicate() {
+        return satisfactionPredicate;
     }
 
     /*

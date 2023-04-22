@@ -1,15 +1,13 @@
 package com.panilya.botscrewtesttask.service;
 
 import com.panilya.botscrewtesttask.exception.CommandNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ChatCommandHandler implements CommandHandler {
 
-    private final CommandFactory commandFactory;
+    private CommandFactory commandFactory;
 
-    @Autowired
     public ChatCommandHandler(CommandFactory commandFactory) {
         this.commandFactory = commandFactory;
     }

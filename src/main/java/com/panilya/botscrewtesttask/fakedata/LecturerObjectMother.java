@@ -7,27 +7,25 @@ import net.datafaker.Faker;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.panilya.botscrewtesttask.database.Degree.*;
+import static com.panilya.botscrewtesttask.database.Degree.ASSISTANT;
+import static com.panilya.botscrewtesttask.database.Degree.ASSOCIATE_PROFESSOR;
+import static com.panilya.botscrewtesttask.database.Degree.PROFESSOR;
 
 public class LecturerObjectMother {
 
     private static final Faker faker = new Faker();
 
     public static Lecturer createLecturer() {
-        return new Lecturer(faker.name().fullName(),
-                List.of(ASSISTANT, ASSOCIATE_PROFESSOR, PROFESSOR).get(faker.number().numberBetween(0, 3)),
-                BigDecimal.valueOf(faker.number().randomDouble(2, 1000, 10000)));
+        return createLecturer(faker.name().fullName());
     }
 
     public static Lecturer createLecturer(String name) {
-        return new Lecturer(name,
-                List.of(ASSISTANT, ASSOCIATE_PROFESSOR, PROFESSOR).get(faker.number().numberBetween(0, 3)),
+        return createLecturer(name, List.of(ASSISTANT, ASSOCIATE_PROFESSOR, PROFESSOR).get(faker.number().numberBetween(0, 3)),
                 BigDecimal.valueOf(faker.number().randomDouble(2, 1000, 10000)));
     }
 
     public static Lecturer createLecturer(String name, BigDecimal salary) {
-        return new Lecturer(name,
-                List.of(ASSISTANT, ASSOCIATE_PROFESSOR, PROFESSOR).get(faker.number().numberBetween(0, 3)),
+        return createLecturer(name, List.of(ASSISTANT, ASSOCIATE_PROFESSOR, PROFESSOR).get(faker.number().numberBetween(0, 3)),
                 salary);
     }
 
