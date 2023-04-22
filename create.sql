@@ -1,0 +1,15 @@
+create table department (id bigserial not null, name varchar(255), primary key (id));
+create table department_lecturer (department_id bigint not null, lecturer_id bigint not null, primary key (department_id, lecturer_id));
+create table lecturer (id bigserial not null, degree varchar(255), name varchar(255), primary key (id));
+alter table if exists department_lecturer add constraint FKmbxhcer4wik6dwia0qqu0u303 foreign key (lecturer_id) references lecturer;
+alter table if exists department_lecturer add constraint FK73rrj16g4tixbob2waqotc0jp foreign key (department_id) references department;
+create table department (id bigserial not null, name varchar(255), primary key (id));
+create table department_lecturer (department_id bigint not null, lecturer_id bigint not null, primary key (department_id, lecturer_id));
+create table lecturer (id bigserial not null, degree varchar(255), name varchar(255), primary key (id));
+alter table if exists department_lecturer add constraint FKmbxhcer4wik6dwia0qqu0u303 foreign key (lecturer_id) references lecturer;
+alter table if exists department_lecturer add constraint FK73rrj16g4tixbob2waqotc0jp foreign key (department_id) references department;
+create table department (id bigserial not null, name varchar(255), primary key (id));
+create table department_lecturer (department_id bigint not null, lecturer_id bigint not null, primary key (department_id, lecturer_id));
+create table lecturer (id bigserial not null, degree varchar(255), name varchar(255), primary key (id));
+alter table if exists department_lecturer add constraint FKmbxhcer4wik6dwia0qqu0u303 foreign key (lecturer_id) references lecturer;
+alter table if exists department_lecturer add constraint FK73rrj16g4tixbob2waqotc0jp foreign key (department_id) references department;
